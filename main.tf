@@ -38,9 +38,9 @@ resource "aws_rds_cluster" "main" {
   engine                          = var.engine
   engine_version                  = var.engine_version
   db_subnet_group_name            = aws_db_subnet_group.main.name
-  database_name                   = data.aws_ssm_parameter.database_name
-  master_username                 = data.aws_ssm_parameter.master_username
-  master_password                 = data.aws_ssm_parameter.master_password
+  database_name                   = data.aws_ssm_parameter.database_name.value
+  master_username                 = data.aws_ssm_parameter.master_username.value
+  master_password                 = data.aws_ssm_parameter.master_password.value
   backup_retention_period         = var.backup_retention_period
   preferred_backup_window         = var.preferred_backup_window
   vpc_security_group_ids          = [aws_security_group.main.id]
